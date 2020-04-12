@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArxFatalisXboxUnpackingTools", "ArxFatalisXboxUnpackingTools\ArxFatalisXboxUnpackingTools.csproj", "{98205FF2-5801-49FE-A3CA-476DA3B4FA88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArxFatalisXboxUnpackingTerminal", "ArxFatalisXboxUnpackingTerminal\ArxFatalisXboxUnpackingTerminal.csproj", "{339C060C-1073-47AC-A45F-EEC670437084}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98205FF2-5801-49FE-A3CA-476DA3B4FA88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98205FF2-5801-49FE-A3CA-476DA3B4FA88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98205FF2-5801-49FE-A3CA-476DA3B4FA88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98205FF2-5801-49FE-A3CA-476DA3B4FA88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339C060C-1073-47AC-A45F-EEC670437084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339C060C-1073-47AC-A45F-EEC670437084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339C060C-1073-47AC-A45F-EEC670437084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339C060C-1073-47AC-A45F-EEC670437084}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C82440D6-307E-4E69-9F28-15C5EC7F5829}
+	EndGlobalSection
+EndGlobal
