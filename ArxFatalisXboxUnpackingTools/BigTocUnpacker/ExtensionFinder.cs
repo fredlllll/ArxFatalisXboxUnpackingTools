@@ -65,7 +65,7 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                 try
                 {
                     f.Position = 0;
-                    string cstring = Util.ReadCString(reader);
+                    string cstring = reader.ReadCString();
                     if (cstring.ContainsIgnoreCase("levels\\level"))
                     {
                         return "fts"; //fts levels contain their dir path as first cstring
@@ -80,7 +80,7 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                 try
                 {
                     f.Position = 4;
-                    string cstring = Util.ReadCString(reader);
+                    string cstring = reader.ReadCString();
                     if (cstring.Equals("DANAE_FILE"))
                     {
                         return "dlf";

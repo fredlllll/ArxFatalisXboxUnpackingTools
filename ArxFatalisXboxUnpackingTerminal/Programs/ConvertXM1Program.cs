@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ArxFatalisXboxUnpackingTools.XM1Converter;
+using System;
+using System.IO;
 
 namespace ArxFatalisXboxUnpackingTerminal.Programs
 {
@@ -8,7 +8,13 @@ namespace ArxFatalisXboxUnpackingTerminal.Programs
     {
         public bool Run()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Enter Path to xm1 file:");
+            string path = Console.ReadLine();
+
+            var converter = new Converter();
+            converter.Convert(new FileInfo(path));
+
+            return true;
         }
     }
 }
