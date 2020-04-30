@@ -12,11 +12,13 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                 try
                 {
                     f.Position = 0;
-                    string first2 = new string(reader.ReadChars(2));
-                    switch (first2)
+                    string first4 = new string(reader.ReadChars(4));
+                    switch (first4)
                     {
-                        case "BM":
-                            return "bmp";
+                        case "RIFF":
+                            return "wav";
+                        case "JFIF":
+                            return "jpg";
                     }
                 }
                 catch { }
@@ -35,6 +37,10 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                             return "ftl";
                         case "XM1":
                             return "xm1";
+                        case "XM2":
+                            return "xm2";
+                        case "XPR":
+                            return "xpr";
                     }
                 }
                 catch { }
@@ -42,22 +48,13 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                 try
                 {
                     f.Position = 0;
-                    string first4 = new string(reader.ReadChars(4));
-                    switch (first4)
+                    string first2 = new string(reader.ReadChars(2));
+                    switch (first2)
                     {
-                        case "RIFF":
-                            return "wav";
-                    }
-                }
-                catch { }
-
-                try
-                {
-                    f.Position = 0;
-                    string jfif = new string(reader.ReadChars(4));
-                    if (jfif.Equals("JFIF"))
-                    {
-                        return "jpg";
+                        case "BM":
+                            return "bmp";
+                        case "XM":
+                            return "xmOTHER";
                     }
                 }
                 catch { }
@@ -103,7 +100,7 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                 }
                 catch { }
 
-                if (f.Length > 0 && Util.IsTextFile(f))
+                if (Util.IsTextFile(f))
                 {
                     return "txt"; //give it txt if it doesnt contain control chars
                 }

@@ -65,7 +65,10 @@ namespace ArxFatalisXboxUnpackingTools.BigTocUnpacker
                     uint garbageChecksumMaybe = tocReader.ReadUInt32();
                     uint fileLength = tocReader.ReadUInt32();
                     uint fileOffset = tocReader.ReadUInt32();
-                    files.Add(new MyFileData(garbageChecksumMaybe, fileLength, fileOffset));
+                    if (fileLength > 0)
+                    { //ignore files with 0 bytes
+                        files.Add(new MyFileData(garbageChecksumMaybe, fileLength, fileOffset));
+                    }
                 }
 
                 Parallel.ForEach(files, (f) =>
