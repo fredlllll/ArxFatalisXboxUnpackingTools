@@ -78,6 +78,11 @@ namespace ArxFatalisXboxUnpackingTools.XM1Converter
                     FileInfo objFile = new FileInfo(Path.Combine(xm1File.DirectoryName, Path.GetFileNameWithoutExtension(xm1File.FullName) + "_" + i + ".obj"));
                     i++;
 
+                    if (mesh.vertices.Count == 0)
+                    {
+                        continue; //skip empty objects
+                    }
+
                     using (FileStream fs = new FileStream(objFile.FullName, FileMode.Create, FileAccess.Write))
                     using (StreamWriter sw = new StreamWriter(fs))
                     {

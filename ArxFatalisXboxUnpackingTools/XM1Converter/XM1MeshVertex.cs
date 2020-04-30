@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace ArxFatalisXboxUnpackingTools.XM1Converter
 {
@@ -8,10 +9,11 @@ namespace ArxFatalisXboxUnpackingTools.XM1Converter
         public byte r, g, b, a;
         public uint flags; //TODO: no idea what this actually does
 
-        float ReadWeird(BinaryReader reader)
+        float ReadInt16Div1000(BinaryReader reader)
         {
-            return reader.ReadInt32() / 1000000.0f;
+            return reader.ReadInt16() / 1000.0f;
         }
+
 
         void WriteWeird(BinaryWriter writer, float f)
         {
@@ -24,9 +26,13 @@ namespace ArxFatalisXboxUnpackingTools.XM1Converter
             //y = reader.ReadSingle();
             //z = reader.ReadSingle();
 
-            x = ReadWeird(reader);
-            y = ReadWeird(reader);
-            z = ReadWeird(reader);
+            x = ReadInt16Div1000(reader);
+            y = ReadInt16Div1000(reader);
+            z = ReadInt16Div1000(reader);
+
+            reader.ReadInt16();//skip unknown shit
+            reader.ReadInt16();
+            reader.ReadInt16();
 
             r = reader.ReadByte();
             g = reader.ReadByte();
