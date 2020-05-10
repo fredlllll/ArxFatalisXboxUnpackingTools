@@ -12,33 +12,42 @@ namespace ArxFatalisXboxUnpackingTerminal
 
         static void Main(string[] args)
         {
-            wr("What you wanna do?");
-            wr("1) unpack big and toc file");
-            wr("2) convert xm1 to obj");
+            bool running = true;
+            while (running)
+            {
+                wr("What you wanna do?");
+                wr("0) exit");
+                wr("1) unpack big and toc file");
+                wr("2) convert xm1 to obj");
 
-            if (int.TryParse(Console.ReadLine(), out int choice))
-            {
-                IProgram toRun = null;
-                switch (choice)
+
+                if (int.TryParse(Console.ReadLine(), out int choice))
                 {
-                    case 1:
-                        toRun = new UnpackBigTocProgram();
-                        break;
-                    case 2:
-                        toRun = new ConvertXM1Program();
-                        break;
-                    default:
-                        wr("not a valid choice, try again next time");
-                        break;
+                    IProgram toRun = null;
+                    switch (choice)
+                    {
+                        case 0:
+                            running = false;
+                            break;
+                        case 1:
+                            toRun = new UnpackBigTocProgram();
+                            break;
+                        case 2:
+                            toRun = new ConvertXM1Program();
+                            break;
+                        default:
+                            wr("not a valid choice, try again next time");
+                            break;
+                    }
+                    if (toRun != null)
+                    {
+                        toRun.Run();
+                    }
                 }
-                if (toRun != null)
+                else
                 {
-                    toRun.Run();
+                    wr("Thats not a number, try again next time");
                 }
-            }
-            else
-            {
-                wr("Thats not a number, try again next time");
             }
         }
     }

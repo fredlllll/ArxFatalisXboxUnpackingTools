@@ -37,7 +37,8 @@ namespace ArxFatalisXboxUnpackingTools.XM1Converter
 
         public void Convert(FileInfo xm1File)
         {
-            var dir = xm1File.Directory.FullName;
+            var outDir = Path.Combine(xm1File.Directory.FullName,Path.GetFileNameWithoutExtension(xm1File.FullName));
+            Directory.CreateDirectory(outDir);
 
             List<XM1Object> objects = new List<XM1Object>();
             var header = new XM1Header();
@@ -54,7 +55,7 @@ namespace ArxFatalisXboxUnpackingTools.XM1Converter
                     var obj = ObjectSerializer.ReadObject(reader);
                     Console.WriteLine("found " + obj.type);
 
-                    var outfile = Path.Combine(dir, "xm1_obj_" + i);
+                    var outfile = Path.Combine(outDir, "xm1_obj_" + i);
                     using (var o = new FileStream(outfile, FileMode.Create, FileAccess.Write))
                     using (var owriter = new BinaryWriter(o))
                     {
@@ -75,7 +76,7 @@ namespace ArxFatalisXboxUnpackingTools.XM1Converter
             {
                 if (obj is XM1MeshObject mesh)
                 {
-                    FileInfo objFile = new FileInfo(Path.Combine(xm1File.DirectoryName, Path.GetFileNameWithoutExtension(xm1File.FullName) + "_" + i + ".obj"));
+                    FileInfo objFile = new FileInfo(Path.Combine(outDir, Path.GetFileNameWithoutExtension(xm1File.FullName) + "_" + i + ".obj"));
                     i++;
 
                     if (mesh.vertices.Count == 0)
